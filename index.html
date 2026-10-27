@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An introduction to SpecLens, a civil-engineering class project prototype for comparing vendor submittals with project specifications.">
+  <title>SpecLens | Civil Engineering Class Project</title>
+  <style>
+    :root { color-scheme: light; --ink: #172e3b; --muted: #4b5d68; --line: #d4dfe4; --accent: #135b57; --soft: #f3f7f7; }
+    * { box-sizing: border-box; }
+    html { scroll-padding-top: 1rem; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.7 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    a { color: var(--accent); text-underline-offset: .2em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 3px solid #a34d00; outline-offset: 5px; border-radius: 2px; }
+    .wrap { width: min(1080px, calc(100% - 3rem)); margin-inline: auto; }
+    .skip { position: absolute; top: -100px; left: 1rem; padding: .7rem 1rem; background: white; z-index: 2; }
+    .skip:focus { top: 1rem; }
+    header { border-bottom: 1px solid var(--line); }
+    .header-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.2rem; }
+    .wordmark { font-size: 1.35rem; font-weight: 750; letter-spacing: -.04em; }
+    .project-label { color: var(--muted); font-size: .9rem; }
+    .hero { padding-block: clamp(3.5rem, 8vw, 6.5rem); max-width: 850px; }
+    .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--accent); margin: 0 0 1.2rem; }
+    h1, h2, h3 { line-height: 1.16; text-wrap: balance; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 650; letter-spacing: -.05em; margin: 0 0 1.5rem; }
+    h2 { font-size: clamp(1.65rem, 3vw, 2.2rem); letter-spacing: -.03em; margin: 0 0 1.1rem; }
+    h3 { font-size: 1.12rem; margin: 0 0 .8rem; }
+    p { margin: 0 0 1rem; }
+    .lead { font-size: 1.2rem; max-width: 680px; color: var(--muted); }
+    .primary { display: inline-block; margin-top: .8rem; padding: .85rem 1.3rem; color: white; background: var(--accent); border: 2px solid var(--accent); border-radius: 5px; font-weight: 650; text-decoration: none; }
+    .primary:hover { background: #0d423f; border-color: #0d423f; text-decoration: underline; }
+    .small { font-size: .9rem; color: var(--muted); }
+    .hero .small { margin-top: 1rem; }
+    section { padding-block: 3.5rem; border-top: 1px solid var(--line); }
+    .section-intro { max-width: 710px; color: var(--muted); }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .steps, .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .steps { list-style: none; padding: 0; counter-reset: step; }
+    .steps li { counter-increment: step; padding-top: 1rem; border-top: 2px solid var(--accent); }
+    .steps li::before { content: "0" counter(step); display: block; color: var(--accent); font-size: .85rem; font-weight: 750; margin-bottom: 1.2rem; }
+    .steps p, .features p { color: var(--muted); margin-bottom: 0; }
+    figure { margin: 2rem 0 0; }
+    .preview-placeholder { min-height: 240px; display: grid; place-content: center; padding: 2rem; border: 1px dashed #81959d; border-radius: 6px; background: var(--soft); text-align: center; }
+    .preview-placeholder strong { font-size: 1.2rem; }
+    .preview-placeholder p { max-width: 480px; margin: .7rem auto 0; color: var(--muted); }
+    figcaption { margin-top: .7rem; color: var(--muted); font-size: .9rem; }
+    .features article { padding: 1.5rem; border: 1px solid var(--line); border-radius: 6px; }
+    .validation { display: inline-block; margin-block: .4rem 1rem; font-weight: 700; }
+    ul { padding-left: 1.3rem; }
+    li + li { margin-top: .5rem; }
+    footer { padding-block: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+    @media (max-width: 700px) {
+      .wrap { width: calc(100% - 2rem); }
+      .header-row { align-items: flex-start; flex-direction: column; gap: .15rem; }
+      .split, .steps, .features { grid-template-columns: 1fr; gap: 1.5rem; }
+      section { padding-block: 2.5rem; }
+      .hero { padding-block: 3rem; }
+      .preview-placeholder { min-height: 200px; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header>
+    <div class="wrap header-row">
+      <span class="wordmark">SpecLens</span>
+      <span class="project-label">Civil-engineering class project · Prototype</span>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="hero">
+      <p class="eyebrow">For project, civil, and structural engineers</p>
+      <h1>Vendor submittals.<br>Project specifications.<br>One comparison workflow.</h1>
+      <p class="lead">SpecLens helps project, civil, and structural engineers compare vendor submittals with project specifications, with the aim of reducing time spent on document review.</p>
+      <a class="primary" href="#demo-preview">View demo preview</a>
+      <p class="small">This page introduces the product. It does not run the AI tool.</p>
+    </div>
+
+    <section aria-labelledby="problem-title">
+      <div class="split">
+        <div>
+          <p class="eyebrow">The problem</p>
+          <h2 id="problem-title">Document review can take hours.</h2>
+        </div>
+        <div>
+          <p>Project engineers, civil engineers, and structural engineers compare vendor submittals against project specifications. Comparing and reviewing those documents can take many hours.</p>
+          <p class="section-intro">SpecLens explores a workflow for bringing that comparison together. Any time-saving benefit still needs to be tested.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="workflow-title">
+      <p class="eyebrow">How it works</p>
+      <h2 id="workflow-title">A three-step review workflow.</h2>
+      <p class="section-intro">The product workflow is described below. No document processing takes place on this introduction page.</p>
+      <ol class="steps">
+        <li><h3>Provide the documents</h3><p>Start with a vendor submittal and the project specifications to compare.</p></li>
+        <li><h3>Run the comparison</h3><p>Use the tool’s API/model connection to compare and match the documents.</p></li>
+        <li><h3>Review and export</h3><p>Verify the findings and source references, then export the report as JSON or use the print view.</p></li>
+      </ol>
+    </section>
+
+    <section id="demo-preview" aria-labelledby="preview-title" tabindex="-1">
+      <p class="eyebrow">Prototype preview</p>
+      <h2 id="preview-title">A place to see SpecLens in use.</h2>
+      <figure>
+        <a href="assets/speclens-comparison.png" aria-label="Open the full-size SpecLens sample comparison screenshot">
+          <img src="assets/speclens-comparison.png" width="1100" height="900" style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px" alt="Actual SpecLens report interface displaying a saved Clemson sample comparison, with a revise-and-resubmit draft, finding counts, source references, and product data.">
+        </a>
+        <figcaption>Actual prototype interface displaying the saved Clemson RCD test response, shown as a report excerpt. It compares selected public Milwaukee specification and McWane submittal pages; these are not a confirmed submission for the same project. Open the image for a larger view.</figcaption>
+      </figure>
+      <div class="features">
+        <article><h3>Document comparison</h3><p>Compare and match vendor submittals with project specifications.</p></article>
+        <article><h3>Report export</h3><p>Download the structured review as JSON or use the printable report view.</p></article>
+        <article><h3>Clemson model connection</h3><p>The testing prototype uses Clemson RCD’s qwen3.8-27b-fp8 model to generate a structured review draft.</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="evidence-title">
+      <div class="split">
+        <div>
+          <p class="eyebrow">Evidence and limits</p>
+          <h2 id="evidence-title">A prototype with validation still ahead.</h2>
+          <p class="validation">Benefits not yet validated.</p>
+          <p class="section-intro">One saved excerpt-comparison test returned a structured report with 13 findings. This demonstrates a completed request and report rendering; it does not establish correctness, completeness, or time savings. No measured accuracy or time-saving study is available.</p>
+        </div>
+        <div>
+          <h3>What this introduction establishes</h3>
+          <ul>
+            <li>SpecLens is a civil-engineering class project prototype.</li>
+            <li>Comparison accuracy and time-saving benefits have not been demonstrated by the supplied materials.</li>
+            <li>Current input limits are 12 MB per file and 18,000 extracted characters across both documents.</li>
+            <li>Scanned PDFs require OCR before upload. Complex tables and source references need manual verification.</li>
+            <li>Clemson access is for testing and may require the campus network or VPN.</li>
+            <li>Comparison history is not implemented in the current prototype.</li>
+            <li>Review all generated content before use; the tool does not approve engineering decisions.</li>
+            <li>This page does not process documents or perform AI reviews.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="next-title">
+      <p class="eyebrow">Next step</p>
+      <h2 id="next-title">Explore the sample, then review its limits.</h2>
+      <p class="section-intro">Use the demo preview above to inspect the report layout and the kinds of findings it presents. A public interactive demo or video is not available; this introduction remains separate from the AI tool.</p>
+      <p><a href="sample-report.html">Read the saved sample report and its scope</a></p>
+      <p class="small">Civil-engineering class project. Team and contact details are intentionally omitted.</p>
+    </section>
+  </main>
+  <footer><div class="wrap">SpecLens · Class project prototype · Benefits not yet validated.</div></footer>
+</body>
+</html>
